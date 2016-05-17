@@ -25,7 +25,7 @@ Apache Avro wrapping Parquet
 
 ##### Share via Amazon S3 Buckets
 
-Please reference the documentation at:
+Please reference the documentation at:  http://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html
 
 
 
