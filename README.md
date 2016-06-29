@@ -392,7 +392,7 @@ There are two Integration Paradigms that we support.   The first is Stream Integ
    * monitored
    * alertable
    * seasoned
-* The Business Subject Matter Expert (SME) of the integration? (day-to-day user of the data, probably the person filling out this form)
+ * The Business Subject Matter Expert (SME) of the integration? (day-to-day user of the data, probably the person filling out this form)
    * Contact Information
      * Name:
      * Title:
