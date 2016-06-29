@@ -5,26 +5,6 @@
 There are two Integration Paradigms that we support.   The first is Stream Integration and the second is Batch Integration.  We find our business increasingly insisting on real time data, and since the batch case can be thought of as a simplified streaming case we prefer streaming.    However, batch is by far the most prevelant integration.
 
 
-
-### Stream Integrations
-
-#### File/Blob Formats in order of preference
-
-Apache Avro
-
-
-
-
-### Batch Integrations
-
-#### File Formats in order of preference
-
-Apache Avro wrapping Parquet
-
-##### Share via Amazon S3 Buckets
-
-Please reference the documentation at:  http://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html
-
 ### Data Questions
 
 #### Data Questions (high level)
@@ -57,7 +37,7 @@ Please reference the documentation at:  http://docs.aws.amazon.com/AmazonS3/late
 #### Data Questions (Transport level)
   * Transport protocol (circle all that apply, assuming all data is available on all selected transports)
     * websockets
-    * Amazon S3
+    * Amazon S3 http://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html
     * SFTP
     * Google Blob Storage
     * REST
@@ -102,6 +82,8 @@ Please reference the documentation at:  http://docs.aws.amazon.com/AmazonS3/late
 
 #### Data Questions (Answer for each File)
  * What is the file & directory name format? 
+   * YYYY/MM/DD/YYYMMDDHHmmss<DATA_NAME>.*
+   * Other? What?
  * What is the format of the file being transfered?
     * Avro wapped Parquet
     * Avro
@@ -130,10 +112,20 @@ Please reference the documentation at:  http://docs.aws.amazon.com/AmazonS3/late
  * Describe (format & count) any footer/header rows in the file
  * Describe any validation or control records present in the file
  * Supply the schema file for the dataset
-   * AVSC
+   * AVSC http://avro.apache.org/docs/current/spec.html
+   * RDFS https://www.w3.org/TR/rdf-schema/
+   * JSON-LD http://json-ld.org/
+   * JSON Schema http://json-schema.org/
    * SQL Schema
    * Sample CSV
-* Describe how you handle record deletions. 
+* Do you have a Data Glossary or other documentation that can help us understand the data within the schema?
+* Type of Integration
+  * Full Load
+  * Incremental
+    * Describe how you handle
+      * New records
+      * Updated Records
+      * Deleted records
 * Describe the reconsilation/restatement process.
 * What CODEC is the file encoded in?
   * UTF8 w/ BOM
@@ -142,9 +134,68 @@ Please reference the documentation at:  http://docs.aws.amazon.com/AmazonS3/late
   * UTF16
   * ISO9660 (no please)
   * Other? What?
+* Encryption
+  * encrypted first then compressed/archived
+  * archived/compressed first then encrypted
+  * None
+* What validations are expected on the data?
+  * High / Low water record thresholds
+  * High / Low water field thresholds
+  * Date Formats, Timezones
+  * Mean/Avg/Variance data and period WoW, (MoM, Daily, etc..)
+  * Validation against control file
+  * CRC Validations
+    * MD5
+    * SHA1
+    * SHA256
+    * Other? What?
+* Chance of duplicated records?
 
 
-#### Data Questions (Detailed level)
+#### Data Questions (Detailed level, repeat for each field as appropriate)
+  * Type of Data
+    * Event Data
+    * State Data
+    * Session Data
+    * Aggregated Data
+      * hourly aggregated
+      * daily aggregated
+      * weekly aggregated
+      * monthly aggregated
+      * quarterly aggregated
+  * Primary Keys and unique keys
+    * Please specify strategy
+  * Date/Time Formats
+    * UTC
+    * TimeZone
+    * DST handling (please no)
+      * How do you handle
+        * Gaining an hour
+        * Losing an hour
+    * Fields & Units
+      * Do field columns include unit specifier
+      * What units is the column in
+    * Field Type
+      * free form
+      * ordinal
+      * categorical
+      * numeric
+      * incremental / delta e.g. + something or - something
+      * GUID
+    * Field Data types (not necessary if this is schema)
+      * unsigned int
+      * signed long
+      * currency
+      * etc...
+    * Currency
+      * Is it adjusted in any way inflation, etc..
+      * Does it include VAT, taxes, etc...
+      * Is it Gross or Net
+  * Is the field derived and how?
+  * Is the field master data and what is it's source?
+    * What standard?
+    * Where is it sourced from?
+    * How is it refreshed?
 
 ### Data Supplier Questions
 * What Service Level Agreement (SLA) is provided with the data?
@@ -157,6 +208,7 @@ Please reference the documentation at:  http://docs.aws.amazon.com/AmazonS3/late
    * 24/7/365 - All Hours
   * Time to first response
   * Time to escalation
+* What validations is performed on the data before being dropped off?
 * Will you inform us before?
   * Expected non-delivery
   * Expected delivery changes
@@ -279,7 +331,7 @@ Please reference the documentation at:  http://docs.aws.amazon.com/AmazonS3/late
   * High / Low water record thresholds
   * High / Low water field thresholds
   * Date Formats, Timezones
-  * Mean/Avg/Variance data and periods
+  * Mean/Avg/Variance data and period WoW, (MoM, Daily, etc..)
 * The Administrative Contact of the integration (the person paying the invoices, assuring paperwork is cleared)
   * Contact Information
     * Name:
