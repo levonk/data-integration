@@ -15,12 +15,12 @@ There are two Integration Paradigms that we support.   The first is Stream Integ
  * Are there other similar datasets/products or "addons" that we should be aware of to avoid confusing things in our discussions?
  * Describe the Dataset
  * Is there any of the following in the data
-   * Payment Card Industry (PCI) data
-     * What Merchant Level is the data? - https://www.pcicomplianceguide.org/pci-faqs-2/#4
-       * Level 1 - 6M+ Vendors or Visa designated Level 1 merchants
-       * Level 2 - 1-6M transaction per year
-       * Level 3 - 20k-1M e-commerce merchants processing transactions per year
-       * Level 4 - Fewer than 20k transaction e-commerce transactions or Fewer than 1M other transactions.
+    * Payment Card Industry (PCI) data
+      * What Merchant Level is the data? - https://www.pcicomplianceguide.org/pci-faqs-2/#4
+        * Level 1 - 6M+ Vendors or Visa designated Level 1 merchants
+        * Level 2 - 1-6M transaction per year
+        * Level 3 - 20k-1M e-commerce merchants processing transactions per year
+        * Level 4 - Fewer than 20k transaction e-commerce transactions or Fewer than 1M other transactions.
    * HIPPA compliant data
    * Private Financial Information
    * Personally Identifiable Information (PII) (circle all that are appropriate)
