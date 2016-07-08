@@ -172,30 +172,35 @@ There are two Integration Paradigms that we support.   The first is Stream Integ
       * How do you handle
         * Gaining an hour
         * Losing an hour
-    * Fields & Units
-      * Do field columns include unit specifier
-      * What units is the column in
-    * Field Type
-      * free form
-      * ordinal
-      * categorical
-      * numeric
+  * Fields & Units
+    * Do field columns include unit specifier
+    * What units is the column in
+    * Can we ever except NULLs and how are they represetnted?
+    * Can we ever except blanks and how are they represented?
+    * Is there a defaul?
+  * Field Type
+    * free form
+    * ordinal
+    * categorical
+      * Are leading zeros important (e.g. zipcodes)
+    * numeric
       * incremental / delta e.g. + something or - something
-      * GUID
-    * Field Data types (not necessary if this is schema)
-      * unsigned int
-      * signed long
-      * currency
-      * etc...
-    * Currency
-      * Is it adjusted in any way inflation, etc..
-      * Does it include VAT, taxes, etc...
-      * Is it Gross or Net
+    * GUID
+  * Field Data types (not necessary if this is schema)
+    * unsigned int
+    * signed long
+    * currency
+    * etc...
+  * Currency
+    * Is it adjusted in any way inflation, etc..
+    * Does it include VAT, taxes, etc...
+    * Is it Gross or Net
   * Is the field derived and how?
-  * Is the field master data and what is it's source?
+  * Is the field master data and what is it's source/lineage?
     * What standard?
     * Where is it sourced from?
     * How is it refreshed?
+  * Is there any content like test data we should filter?
 
 ### Data Supplier Questions
 * What Service Level Agreement (SLA) is provided with the data?
@@ -418,8 +423,13 @@ There are two Integration Paradigms that we support.   The first is Stream Integ
        * IM
        * Email
        * Phone
-  
-
+  * Who can we go through for the upstream providor of this data to fill out additional information?
+   * Contact Information
+     * Name:
+     * Supplier/Vendor:
+     * Email:
+     * Phone:
+     * IM:
 
 
 Copyright (C) 2016 Levon Karayan
