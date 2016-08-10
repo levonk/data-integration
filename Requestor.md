@@ -76,7 +76,7 @@
    * End of calendar year
    * Other: _______________________________________________________
 
- * What Service Level Agreements (SLA) will you be paying for? (Note: we're limited from downstream providors)
+ * What Service Level Agreements (SLA) will you be paying for? (Note: we're limited by upstream providors)
    * Backlog / when it's conveniant (default)
    * Next business day
    * 8/5/249 - Business Hours
