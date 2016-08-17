@@ -98,14 +98,14 @@
      * Email
      * Phone
      * IM
-* What validations are expected on the data?
-  * High / Low water record thresholds
-  * High / Low water field thresholds
-  * Date Formats, Timezones
-  * Mean/Avg/Variance data and period WoW, (MoM, Daily, etc..)
-* What is the data retention policy we should enforce? (days, weeks, months, years, none)
-  * On the raw data 
-  * On the derived data
+	* What validations are expected on the data?
+		* High / Low water record thresholds
+		* High / Low water field thresholds
+		* Date Formats, Timezones
+		* Mean/Avg/Variance data and period WoW, (MoM, Daily, etc..)
+	* What is the data retention policy we should enforce? (days, weeks, months, years, none)
+		* On the raw data 
+		* On the derived data
 * The Administrative Contact of the integration (the person paying the invoices, assuring paperwork is cleared)
   * Contact Information
     * Name:
