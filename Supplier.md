@@ -65,6 +65,8 @@ There are two Integration Paradigms that we support.   The first is Stream Integ
 
 
 #### Data Questions (Dataset level)
+  * Does the Data need to be a point in time snapshot?  
+    * Do we have to pull the data at the same time each day to prevent erroneous trends?
   * How often is data updated?
     * realtime <50ms
     * near-realtime 50ms-15 minutes
