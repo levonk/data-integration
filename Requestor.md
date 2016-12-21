@@ -15,6 +15,9 @@
    * Major Financial decisions
    * Major business strategy decisions
    * Something else?
+ * Do you need a schema exposed? - to make SQL queries
+   * yes
+   * no
  * Phased Delivery
    * manual
    * automated
