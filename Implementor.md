@@ -16,7 +16,7 @@ Implement the system with these guidelines
 	* Prefer paritions with latest pointer in meta-store instead of droping data
     * Do not drop tables unless successful load to partition/temp table has happened
 	* Perform validations before load
-	* Have standardized file naming 
+	* Have standardized file naming that specifically avoids lexographic order to allow better performance
 	* raw data should be ingested without any transformations
 	* ingest date should be parameterized
 	* ingest should probably include some amount of rolling load in case there was an issue
@@ -24,6 +24,11 @@ Implement the system with these guidelines
 	* typical use case is to alter table to add partions, msck can be run to assure all partitions are accounted for occassionally or overnight
 	* Gzip for data that does not need to be splittable since it compresses better, snappy for when it does need to split at the cost of data size
 	* Annotate Country of Origin of the data to fullfill compliance requirements
+	* Automated Alerts
+	  * Look for decreases in cumulative fields over days
+	  * Linear Regression + Thresholds for low varience data ingests
+	  * Look for misspellings
+	  * Look for duplicate data
   * Transformations
     * Use static/mock data tests for positive/negative tests of all transformations
 	  * Must have test input data
