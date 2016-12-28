@@ -50,6 +50,7 @@ Implement the system with these guidelines
 	  * Technical in-team Subject Matter Expert for this workflow
 	  * details about need for sampling time accuracy
 	  * Support level
+	  * Who to charge for work/load/issues
 
 
 
