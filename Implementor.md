@@ -73,6 +73,7 @@ Implement the system with these guidelines
 	   * Field level SPI/PII Encryption (hopefully done at source)
 	   * Documentation from Requestor / Supplier
 	   * Standardize Times here or Layer 2 (be consistent)
+	   * Should have AVDLs that represent data even if data is not stored as parquet/avro
   * Layer 2
      * Quality - Parquet
 	 * Notes
@@ -81,15 +82,18 @@ Implement the system with these guidelines
 	   * Partitioned better for query
 	   * Aggregated / Cubed / Widened aka de-normalized
 	   * Handles deletes and updates - Merge Pattern
+	   * Should have AVDLs that represent data
   * Layer 3
      * Integrated
 	 * Notes
 	   * Integrate data from multiple systems
 	   * Model based on Data Vault Pattern 2.0
+	   * Should have AVDLs that represent data
   * Layer 4
      * Reference
 	 * Notes
 	   * Conformed, Master & Reference Data
+	   * Should have AVDLs that represent data
 
 
 
