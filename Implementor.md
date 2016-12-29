@@ -67,10 +67,10 @@ Implement the system with these guidelines
      * Raw Storage - Text, Excel, JSON, XML, CSV
      * Notes
 	   * Source of truth
-	   * Partitioned by Ingest
-	   * Critical to backup
+	   * Partitioned by Ingest datetime
+	   * Critical to backup this bucket above all
 	   * Minimal if any Transformations
-	   * Field level SPI/PII Encryption
+	   * Field level SPI/PII Encryption (hopefully done at source)
 	   * Documentation from Requestor / Supplier
 	   * Standardize Times here or Layer 2 (be consistent)
   * Layer 2
