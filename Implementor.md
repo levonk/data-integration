@@ -63,8 +63,10 @@ Implement the system with these guidelines
 
 ### Data Storage Layers
 
-  * Layer 1
-     * Raw Storage - Text, Excel, JSON, XML, CSV
+  * Layer 0 - Raw as ingested
+     * Data as ingested
+     * Very High Security
+  * Layer 1 - Hard Business Rules
      * Notes
 	   * Source of truth
 	   * Partitioned by Ingest datetime
@@ -74,27 +76,49 @@ Implement the system with these guidelines
 	   * Documentation from Requestor / Supplier
 	   * Standardize Times here or Layer 2 (be consistent)
 	   * Should have AVDLs that represent data even if data is not stored as parquet/avro
-  * Layer 2
+  * Layer 2 - Performance Improvement
      * Quality - Parquet
 	 * Notes
+	   * Data Domain Alignment (Data Type Matching)
+	   * Normalization
+	   * System Column Computation
 	   * Data Cleansing
 	   * Profiling
 	   * Partitioned better for query
 	   * Aggregated / Cubed / Widened aka de-normalized
 	   * Handles deletes and updates - Merge Pattern
 	   * Should have AVDLs that represent data
-  * Layer 3
+  * Layer 3 - Multiple Data Sources Joined, soft business rules
      * Integrated
 	 * Notes
+	   * Any requirement that the business user states that changes the data or changes the meaning of the data
+	     * The grain or interpretation
 	   * Integrate data from multiple systems
 	   * Model based on Data Vault Pattern 2.0
 	   * Should have AVDLs that represent data
-  * Layer 4
+  * Layer 4 - Clean Reference Tables and Lookups
      * Reference
 	 * Notes
 	   * Conformed, Master & Reference Data
 	   * Should have AVDLs that represent data
+  * Layer X - Data Lab for users transient tables / views
 
+### Shared Metadata
+
+  * See Data Vault 2.0 overview
+  * Attributes
+    * *_sqn - Sequence
+	  * The inertion order into the table
+    * *_ldts - Load Date
+	  * When the warehouse first saw the data
+    * *_rsrc - Record Source
+	  * System + App where the data originated
+    * *_ledts - End of lifecycle
+	  * Used for superceded records
+  * Tables
+    * Hubs - business keys
+    * Links - Associations / Transactions
+    * Satellites - Descriptors
 
 
 Copyright (C) 2016 Levon Karayan
