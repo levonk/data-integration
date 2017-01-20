@@ -66,9 +66,12 @@ Implement the system with these guidelines
   * Layer 0 - Raw as ingested
      * Data as ingested
      * Very High Security
-  * Layer 1 - Hard Business Rules
+     * Delete super sensitive data after ingest
+  * Layer 1 - High Granular Queryable
      * Notes
 	   * Source of truth
+	   * Parquet format
+	   * limited access only to people that understand risks of big data
 	   * Partitioned by Ingest datetime
 	   * Critical to backup this bucket above all
 	   * Minimal if any Transformations
@@ -76,7 +79,7 @@ Implement the system with these guidelines
 	   * Documentation from Requestor / Supplier
 	   * Standardize Times here or Layer 2 (be consistent)
 	   * Should have AVDLs that represent data even if data is not stored as parquet/avro
-  * Layer 2 - Performance Improvement
+  * Layer 2 - Hard Business Rules
      * Quality - Parquet
 	 * Notes
 	   * Data Domain Alignment (Data Type Matching)
