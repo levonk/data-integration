@@ -63,11 +63,45 @@ Implement the system with these guidelines
 
 ### Data Storage Layers
 
-  * Layer 0 - Raw as ingested
+  * Layer 0 - Sensitive Data Only
      * Data as ingested
-     * Very High Security
+     * Accessible only via service accounts for ingest
      * Delete super sensitive data after ingest
-  * Layer 1 - High Granular Queryable
+  * Layer 1 - Schemaless/unstructured/semi-structured layer
+     * Goals
+	   * Communication checkpoint about where data is
+	   * an option for really advanced users
+	   * Make it accessible without schema
+	   * Validate what they said they are going to send is what they sent
+     * Notes
+	   * no transformations other than security hash/encryption/homomorphic
+	     * PII
+		 * PCI
+		 * etc...
+	   * md5 or other checksum validation
+	   * Pattern matchers for
+	     * Credit card numbers
+		 * social security numbers
+		 * phone numbers
+		 * street addresses
+		 * email addresses
+		 * high resolution GPS Coordinates
+		 * IP Addresses
+		 * First names & Last Names
+	   * File format compliance validations
+	     * csv, vs. tsv, parquet, avro, etc...
+     * Risk
+	   * end users will need to deal with all changes and unexpecte breakages
+	   * poor performance
+	   * system wide impact
+	 * Persona
+	   * Very strong Java, Scala, Python, R, AWS, Linux, Data skills
+	   * Willing to deal with upstream data problems
+  * Layer 2 - High Granular Queryable
+     * Goals
+	   * Address security
+	   * Performance for querying
+	   * Convert to schema-ized
      * Notes
 	   * Source of truth
 	   * Parquet format
@@ -77,9 +111,10 @@ Implement the system with these guidelines
 	   * Minimal if any Transformations
 	   * Field level SPI/PII Encryption (hopefully done at source)
 	   * Documentation from Requestor / Supplier
-	   * Standardize Times here or Layer 2 (be consistent)
+	   * Standardize Times here (be consistent)
 	   * Should have AVDLs that represent data even if data is not stored as parquet/avro
-  * Layer 2 - Hard Business Rules
+	   * file format is valid
+  * Layer 3 - Hard Business Rules
      * Quality - Parquet
 	 * Notes
 	   * Data Domain Alignment (Data Type Matching)
@@ -91,7 +126,7 @@ Implement the system with these guidelines
 	   * Aggregated / Cubed / Widened aka de-normalized
 	   * Handles deletes and updates - Merge Pattern
 	   * Should have AVDLs that represent data
-  * Layer 3 - Multiple Data Sources Joined, soft business rules
+  * Layer 4 - Multiple Data Sources Joined, soft business rules
      * Integrated
 	 * Notes
 	   * Any requirement that the business user states that changes the data or changes the meaning of the data
@@ -99,7 +134,7 @@ Implement the system with these guidelines
 	   * Integrate data from multiple systems
 	   * Model based on Data Vault Pattern 2.0
 	   * Should have AVDLs that represent data
-  * Layer 4 - Clean Reference Tables and Lookups
+  * Layer 5 - Clean Reference Tables and Lookups
      * Reference
 	 * Notes
 	   * Conformed, Master & Reference Data
