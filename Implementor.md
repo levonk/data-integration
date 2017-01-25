@@ -63,16 +63,17 @@ Implement the system with these guidelines
 
 ### Data Storage Layers
 
-  * Layer 0 - Sensitive Data Only
+  * Layer 0 - Pre Sensitive Data Screen
      * Data as ingested
      * Accessible only via service accounts for ingest
-     * Delete super sensitive data after ingest
+     * Delete super sensitive data after ingest if necessary
   * Layer 1 - Schemaless/unstructured/semi-structured layer
      * Goals
 	   * Communication checkpoint about where data is
 	   * an option for really advanced users
 	   * Make it accessible without schema
 	   * Validate what they said they are going to send is what they sent
+	   * Address security
      * Notes
 	   * no transformations other than security hash/encryption/homomorphic
 	     * PII
@@ -90,16 +91,22 @@ Implement the system with these guidelines
 		 * First names & Last Names
 	   * File format compliance validations
 	     * csv, vs. tsv, parquet, avro, etc...
-     * Risk
+     * Risk of direct use
 	   * end users will need to deal with all changes and unexpecte breakages
-	   * poor performance
-	   * system wide impact
+	   * very poor performance
+	   * system wide impact of improper use of data
+	   * Willing to deal with upstream data availablity problems
+	   * Willing to deal with upstream data quality problems
 	 * Persona
-	   * Very strong Java, Scala, Python, R, AWS, Linux, Data skills
-	   * Willing to deal with upstream data problems
+	   * Jane the Data Wizard (Data Scientist with programming skills)
+	   * Very strong programming (beyond SQL) skills: Java, Scala, Python, R
+	   * Very strong ELT skills: ingest, bandwidth
+	   * Very strong operations skills: AWS, Linux, performance, stability
+	 * Use Case
+	   * Need data as soon as available
+	   * Not sure if there will be an ongoing use of this data
   * Layer 2 - High Granular Queryable
      * Goals
-	   * Address security
 	   * Performance for querying
 	   * Convert to schema-ized
      * Notes
@@ -112,20 +119,26 @@ Implement the system with these guidelines
 	   * Field level SPI/PII Encryption (hopefully done at source)
 	   * Documentation from Requestor / Supplier
 	   * Standardize Times here (be consistent)
+	     * All times in UST
+		 * 12/24 hour correctly to datetime object 
+	   * Standardize units here
+	   * Semantic views and data glossary
 	   * Should have AVDLs that represent data even if data is not stored as parquet/avro
-	   * file format is valid
+	   * Field level validations
+	   * Data Cleansing
+	   * Handles deletes and updates - Merge Pattern
+	   * Normalization
+	   * Data Domain Alignment (Data Type Matching)
+	 * Persona
+	   * Need to understand data to communicate higher level requirements
+	   * Strong SQL skills
   * Layer 3 - Hard Business Rules
      * Quality - Parquet
 	 * Notes
-	   * Data Domain Alignment (Data Type Matching)
-	   * Normalization
 	   * System Column Computation
-	   * Data Cleansing
 	   * Profiling
 	   * Partitioned better for query
 	   * Aggregated / Cubed / Widened aka de-normalized
-	   * Handles deletes and updates - Merge Pattern
-	   * Should have AVDLs that represent data
   * Layer 4 - Multiple Data Sources Joined, soft business rules
      * Integrated
 	 * Notes
