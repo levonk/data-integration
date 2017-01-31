@@ -63,11 +63,15 @@ Implement the system with these guidelines
 
 ### Data Storage Layers
 
-  * Layer 0 - Pre Sensitive Data Screen
-     * Data as ingested
+  * Layer 0 - Pre Sensitive Data Screen - Extract
+     * Data as ingested (except if needs encrypted)
      * Accessible only via service accounts for ingest
      * Delete super sensitive data after ingest if necessary
-  * Layer 1 - Schemaless/unstructured/semi-structured layer
+     * Non-published staging area
+     * "Deny unless" ruleset
+     * Use source database encryption algorithm on the way into this bucket if possible
+	 * {dev,qa,stage,prod}.{ds,LoB}.L0.{DOMAIN}
+  * Layer 1 - Schemaless/unstructured/semi-structured layer - Loaded / Encrypted
      * Goals
 	   * Communication checkpoint about where data is
 	   * an option for really advanced users
@@ -75,11 +79,12 @@ Implement the system with these guidelines
 	   * Validate what they said they are going to send is what they sent
 	   * Address security
      * Notes
+	   * {dev,qa,stage,prod}.{ds,LoB}.L1.{DOMAIN}
 	   * no transformations other than security hash/encryption/homomorphic
 	     * PII
 		 * PCI
 		 * etc...
-	   * md5 or other checksum validation
+	   * md5 or other checksum validation iff available
 	   * Pattern matchers for
 	     * Credit card numbers
 		 * social security numbers
@@ -90,7 +95,7 @@ Implement the system with these guidelines
 		 * IP Addresses
 		 * First names & Last Names
 	   * File format compliance validations
-	     * csv, vs. tsv, parquet, avro, etc...
+	     * csv vs. tsv, parquet, avro, etc...
      * Risk of direct use
 	   * end users will need to deal with all changes and unexpecte breakages
 	   * very poor performance
@@ -104,12 +109,14 @@ Implement the system with these guidelines
 	   * Very strong operations skills: AWS, Linux, performance, stability
 	 * Use Case
 	   * Need data as soon as available
-	   * Not sure if there will be an ongoing use of this data
-  * Layer 2 - High Granular Queryable
+	   * Not sure if there will be an ongoing use of this data to warrent further work.
+	   * status upate on the way to higher data layers
+  * Layer 2 - High Granular Queryable - strict Transforms
      * Goals
 	   * Performance for querying
 	   * Convert to schema-ized
      * Notes
+	   * {dev,qa,stage,prod}.{ds,LoB}.L2.{DOMAIN}
 	   * Source of truth
 	   * Parquet format
 	   * limited access only to people that understand risks of big data
@@ -120,39 +127,49 @@ Implement the system with these guidelines
 	   * Documentation from Requestor / Supplier
 	   * Standardize Times here (be consistent)
 	     * All times in UST
-		 * 12/24 hour correctly to datetime object 
+	     * 12/24 hour correctly to datetime object
 	   * Standardize units here
 	   * Semantic views and data glossary
 	   * Should have AVDLs that represent data even if data is not stored as parquet/avro
 	   * Field level validations
-	   * Data Cleansing
-	   * Handles deletes and updates - Merge Pattern
-	   * Normalization
 	   * Data Domain Alignment (Data Type Matching)
 	 * Persona
 	   * Need to understand data to communicate higher level requirements
-	   * Strong SQL skills
-  * Layer 3 - Hard Business Rules
-     * Quality - Parquet
+	   * Strong SQL skills in optimization.
+  * Layer 3 - Hard Business Rules - normalization transforms
+     * Quality
 	 * Notes
+	   * {dev,qa,stage,prod}.{ds,LoB}.L3.{DOMAIN}
 	   * System Column Computation
+	   * Data Cleansing
+	   * Handles deletes and updates - Merge Pattern
+	   * Normalization
+	   * Foreign Keys / Dedupe / Explode logic standardized
 	   * Profiling
 	   * Partitioned better for query
-	   * Aggregated / Cubed / Widened aka de-normalized
-  * Layer 4 - Multiple Data Sources Joined, soft business rules
+  * Layer 4 - Multiple Data Sources Joined, soft business rules - widening transforms
      * Integrated
 	 * Notes
+	   * {dev,qa,stage,prod}.{ds,LoB}.L4.{DOMAIN}
 	   * Any requirement that the business user states that changes the data or changes the meaning of the data
 	     * The grain or interpretation
 	   * Integrate data from multiple systems
+	   * referential level validations
+	   * Aggregated / Cubed / Widened aka de-normalized
 	   * Model based on Data Vault Pattern 2.0
 	   * Should have AVDLs that represent data
   * Layer 5 - Clean Reference Tables and Lookups
      * Reference
 	 * Notes
+	   * {dev,qa,stage,prod}.{ds,LoB}.L5.{DOMAIN}
 	   * Conformed, Master & Reference Data
 	   * Should have AVDLs that represent data
   * Layer X - Data Lab for users transient tables / views
+	 * Notes
+	   * adhoc.{ds,LoB}.lab.{DOMAIN}
+	   * Not backed up
+	   * may be lost
+	   * For short term experimentation
 
 ### Shared Metadata
 
