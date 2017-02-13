@@ -188,5 +188,19 @@ Implement the system with these guidelines
     * Links - Associations / Transactions
     * Satellites - Descriptors
 
+### Maturity of Ingests
+  * Manual
+    * Data is loaded and made accessible to end user at Layer 1 or Layer 2
+  * Automated
+    * Git repository containing all code
+    * Feature document with requirements and tech design created, code reviewed, and merged
+    * Jenkinsfile for continuous delivery
+    * Job metadata of downstream job updated to include new job for lineage purposes
+  * Scheduled
+  * Derived / Aggregated
+  * Validated
+  * Monitored
+  * Alertable
+  * Seasoned
 
 Copyright (C) 2016 Levon Karayan
