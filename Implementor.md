@@ -125,9 +125,9 @@ Implement the system with these guidelines
 	   * Minimal if any Transformations
 	   * Field level SPI/PII Encryption (hopefully done at source)
 	   * Documentation from Requestor / Supplier
-	   * Standardize Times here (be consistent)
+	   * Standardize Times here (be consistent within the Datalake)
 	     * All times in UST
-	     * 12/24 hour correctly to datetime object
+	     * 12/24 hour correctly to datetime object in 24h format
 	   * Standardize units here
 	   * Semantic views and data glossary
 	   * Should have AVDLs that represent data even if data is not stored as parquet/avro
@@ -190,34 +190,59 @@ Implement the system with these guidelines
 
 ### Maturity of Ingests
   * Manual
+    * Data is assured not to have PCI, PII, Confidential Sensitive, Confidential
     * Data is loaded and made accessible to end user at Layer 1 or Layer 2
     * Data is Smoke tested before exposed to user
     * Data is Loaded into temp space
   * Automated
     * Git repository containing all code
     * Feature document with requirements and tech design created, code reviewed, and merged
-    * Jenkinsfile for continuous delivery
-    * Jenkinsfile tested and validated
-    * Job is created in git repository to load data into sensible schema
-    * Job is smoke tested for functionality
-    * Job is tested and validated
-    * Job metadata of downstream job updated to include new job for lineage purposes
+    * AVDLs explaining data model, comments, documentation
     * Data stored as Parquet
+    * Data model documentation created
+    * POJO object library created of data model
+    * Data is retrieved from farthest accessible upstream point in-the-realm-of-possibility unless there is an exception
+	* Data is compressed via snappy
+	* _sqn (Sequence) number added
+	* _ldts (Load) datetime added
+	* _rsrc (Resource) source system identifier added
+	* _exts (Expire) datetime added iff necessary
     * Partitions are reasonably sized
     * Files within partiion are reasonably sized
 	* All file parts have appropriate file extension
-    * Data is retrieved from farthest accessible upstream point in-the-realm-of-possibility unless there is an exception
+	* Partitioned by Ingest datetime
+	* md5 or other checksum validation iff available
+	* control file asserted iff available
+    * Standardize Times here (be consistent within the Datalake)
+	  * All times in UST
+	  * 12/24 hour correctly to datetime object in 24h format
+    * Standardize units
+    * All cumulatives should be increasing
+    * Full loads should come in under a different partition and the table pointer should be changed
+    * Job is created in git repository to load data into sensible schema
+    * if Job is an update, enhancement, bugfix, previous data is migrated
+    * Job is smoke tested for functionality
+    * Job is tested and validated via dev, qa, uat, prod
+    * Job metadata of downstream job updated to include new job for lineage purposes
+    * Jenkinsfile for continuous delivery
+    * Jenkinsfile tested and validated
   * Scheduled
     * Has been tested to have at least 5 cycles of scheduled frequency of success
     * Slack alerts have been set up to inform user (based on preference) start/success/fail/issues
     * Recovery job created 
     * Recovery job is smoke tested for functionality
     * Recovery job is tested and validated
+	* Alerting is setup if backups are inconsistant
     * Schedule is added to support the above job
+    * No false alarms
   * Derived / Aggregated
   * Validated
   * Monitored
   * Alertable
   * Seasoned
+    * Backups are scheduled
+    * Restores are tested and validated
+    * Secondary orchestration server validation to validate the first
+    * Backups are validated
 
 Copyright (C) 2016 Levon Karayan
