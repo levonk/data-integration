@@ -191,12 +191,29 @@ Implement the system with these guidelines
 ### Maturity of Ingests
   * Manual
     * Data is loaded and made accessible to end user at Layer 1 or Layer 2
+    * Data is Smoke tested before exposed to user
+    * Data is Loaded into temp space
   * Automated
     * Git repository containing all code
     * Feature document with requirements and tech design created, code reviewed, and merged
     * Jenkinsfile for continuous delivery
+    * Jenkinsfile tested and validated
+    * Job is created in git repository to load data into sensible schema
+    * Job is smoke tested for functionality
+    * Job is tested and validated
     * Job metadata of downstream job updated to include new job for lineage purposes
+    * Data stored as Parquet
+    * Partitions are reasonably sized
+    * Files within partiion are reasonably sized
+	* All file parts have appropriate file extension
+    * Data is retrieved from farthest accessible upstream point in-the-realm-of-possibility unless there is an exception
   * Scheduled
+    * Has been tested to have at least 5 cycles of scheduled frequency of success
+    * Slack alerts have been set up to inform user (based on preference) start/success/fail/issues
+    * Recovery job created 
+    * Recovery job is smoke tested for functionality
+    * Recovery job is tested and validated
+    * Schedule is added to support the above job
   * Derived / Aggregated
   * Validated
   * Monitored
