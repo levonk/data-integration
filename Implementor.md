@@ -126,6 +126,7 @@ Implement the system with these guidelines
 	   * Field level SPI/PII Encryption (hopefully done at source)
 	   * Documentation from Requestor / Supplier
 	   * Standardize Times here (be consistent within the Datalake)
+	     * All dates in YYYY-MM-dd format
 	     * All times in UST
 	     * 12/24 hour correctly to datetime object in 24h format
 	   * Standardize units here
@@ -194,55 +195,76 @@ Implement the system with these guidelines
     * Data is loaded and made accessible to end user at Layer 1 or Layer 2
     * Data is Smoke tested before exposed to user
     * Data is Loaded into temp space
+    * Access credentials are stored in data services Vault from hashicorp
   * Automated
-    * Git repository containing all code
-    * Feature document with requirements and tech design created, code reviewed, and merged
+    * SDLC
+      * Git repository containing all code
+      * Feature document with requirements and tech design created, code reviewed, and merged
+      * Job is created in git repository to load data into sensible schema
+	    * Job references environment for
+		  * Processing Engine
+		  * destination/S3 buckets
+		  * source system info
+		  * Hashicorp Vault host
+		  * Alert Channel
+		  * Phase (dev, qa, uat, stage, prod
+	    * Job is parameterized for
+		  * start_{date,hr,yr,month,etc..} it should start processing for (inclusive)
+		  * end_{date,hr,yr,month,etc..} it should stop processing (inclusive)
+      * if Job is an update, enhancement, bugfix, previous data is migrated
+      * Job is smoke tested for functionality
+      * Job is tested and validated via dev, qa, uat, prod
+      * Job metadata of downstream job updated to include new job for lineage purposes
+      * Jenkinsfile for continuous delivery
+      * Jenkinsfile tested and validated
+      * If the job is currently running in an enviornment that isn't the latest in-production cluster, then it must be upgraded.
     * AVDLs explaining data model, comments, documentation
-    * Data stored as Parquet
-    * Data model documentation created
-    * POJO object library created of data model
-    * Data is retrieved from farthest accessible upstream point in-the-realm-of-possibility unless there is an exception
-	* Data is compressed via snappy
-	* _sqn (Sequence) number added
-	* _ldts (Load) datetime added
-	* _rsrc (Resource) source system identifier added
-	* _exts (Expire) datetime added iff necessary
-    * Partitions are reasonably sized
-    * Files within partiion are reasonably sized
-	* All file parts have appropriate file extension
-	* Partitioned by Ingest datetime
-	* md5 or other checksum validation iff available
-	* control file asserted iff available
-    * Standardize Times here (be consistent within the Datalake)
-	  * All times in UST
-	  * 12/24 hour correctly to datetime object in 24h format
-    * Standardize units
-    * All cumulatives should be increasing
-    * Full loads should come in under a different partition and the table pointer should be changed
-    * Job is created in git repository to load data into sensible schema
-    * if Job is an update, enhancement, bugfix, previous data is migrated
-    * Job is smoke tested for functionality
-    * Job is tested and validated via dev, qa, uat, prod
-    * Job metadata of downstream job updated to include new job for lineage purposes
-    * Jenkinsfile for continuous delivery
-    * Jenkinsfile tested and validated
+      * Data stored as Parquet
+      * Data model documentation created
+	  * Data is annotated
+	    * _uid (GUID) unique id added
+	    * _sqn (Sequence) number added
+	    * _ldts (Load) datetime UST added
+	    * _rsrc (Resource) source system identifier added
+	    * _exts (Expire) datetime UST added iff necessary
+	    * Standardize Times here (be consistent within the Datalake)
+	      * _All datetimes in UST if that is not the case, create an annotated column that contains the time in UST
+	      * 12/24 hour correctly to datetime object in 24h format
+        * Standardize units
+      * POJO object library created of data model
+      * Maven module that puts dependendency into a maven repository that the job depends on
+    * Architecture
+      * Data is retrieved from farthest accessible upstream point in-the-realm-of-possibility unless there is an exception
+	  * Data is compressed via snappy
+      * Partitions are reasonably sized
+      * Files within partiion are reasonably sized
+	  * All file parts have appropriate file extension
+	  * Partitioned by Ingest datetime
+	  * md5 or other checksum validation iff available
+	  * control file asserted iff available
+      * Full loads should come in under a different partition and the table pointer should be changed
+	* Data quality
+      * All cumulatives should be increasing
+      * outputs follow naming standards for underlying *.parquet files and within metastore
   * Scheduled
     * Has been tested to have at least 5 cycles of scheduled frequency of success
     * Slack alerts have been set up to inform user (based on preference) start/success/fail/issues
-    * Recovery job created 
+    * Recovery job created that does only data validation without data movement on a different orchestration server
     * Recovery job is smoke tested for functionality
     * Recovery job is tested and validated
 	* Alerting is setup if backups are inconsistant
     * Schedule is added to support the above job
     * No false alarms
   * Derived / Aggregated
+    * Mock data static integration tests are created
+	* derived job stores data in a different bucket
   * Validated
   * Monitored
   * Alertable
   * Seasoned
     * Backups are scheduled
+    * Backups are validated
     * Restores are tested and validated
     * Secondary orchestration server validation to validate the first
-    * Backups are validated
 
 Copyright (C) 2016 Levon Karayan
