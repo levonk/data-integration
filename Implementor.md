@@ -211,6 +211,7 @@ Implement the system with these guidelines
 	    * Job is parameterized for
 		  * start_{date,hr,yr,month,etc..} it should start processing for (inclusive)
 		  * end_{date,hr,yr,month,etc..} it should stop processing (inclusive)
+	    * If job materializes row, it must be as a DataSet
       * if Job is an update, enhancement, bugfix, previous data is migrated
       * Job is smoke tested for functionality
       * Job is tested and validated via dev, qa, uat, prod
