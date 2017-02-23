@@ -238,6 +238,7 @@ Implement the system with these guidelines
       * Data is retrieved from farthest accessible upstream point in-the-realm-of-possibility unless there is an exception
 	  * Data is compressed via snappy
       * Partitions are reasonably sized
+      * Must use Apache Beam for all jobs
       * Files within partiion are reasonably sized
 	  * All file parts have appropriate file extension
 	  * Partitioned by Ingest datetime
@@ -247,6 +248,9 @@ Implement the system with these guidelines
 	* Data quality
       * All cumulatives should be increasing
       * outputs follow naming standards for underlying *.parquet files and within metastore
+	* operationalization
+	  * Do not use thriftserver, must use Livy to submit sql
+	  * Must use livy elt component job
   * Scheduled
     * Has been tested to have at least 5 cycles of scheduled frequency of success
     * Slack alerts have been set up to inform user (based on preference) start/success/fail/issues
@@ -267,5 +271,11 @@ Implement the system with these guidelines
     * Backups are validated
     * Restores are tested and validated
     * Secondary orchestration server validation to validate the first
+  * Decommissioned
+    * No longer scheuled
+	* Metadata added to table to identify the last update date on the source table
+  * Archived
+    * Table is removed from metastore 
+	* data is moved out of prod buckets and into cold storage.
 
 Copyright (C) 2016 Levon Karayan
