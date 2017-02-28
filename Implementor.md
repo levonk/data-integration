@@ -71,7 +71,7 @@ Implement the system with these guidelines
      * "Deny unless" ruleset
      * Use source database encryption algorithm on the way into this bucket if possible
      * Partitioned by date time of ingest foo/DATE=2017-02-30/...
-	 * {dev,qa,stage,prod}.{ds,LoB}.L0.{DOMAIN}
+	 * {dev,qa,stage,prod}.{ds,LoB}.l0.{DOMAIN}
   * Layer 1 - Schemaless/unstructured/semi-structured layer - Loaded / Encrypted
      * Goals
 	   * Communication checkpoint about where data is
@@ -80,7 +80,7 @@ Implement the system with these guidelines
 	   * Validate what they said they are going to send is what they sent
 	   * Address security
      * Notes
-	   * {dev,qa,stage,prod}.{ds,LoB}.L1.{DOMAIN}
+	   * {dev,qa,stage,prod}.{ds,LoB}.l1.{DOMAIN}
 	   * no transformations other than security hash/encryption/homomorphic
 	     * PII
 		 * PCI
@@ -118,7 +118,7 @@ Implement the system with these guidelines
 	   * Performance for querying
 	   * Convert to schema-ized
      * Notes
-	   * {dev,qa,stage,prod}.{ds,LoB}.L2.{DOMAIN}
+	   * {dev,qa,stage,prod}.{ds,LoB}.l2.{DOMAIN}
 	   * Source of truth
 	   * Parquet format
 	   * limited access only to people that understand risks of big data
@@ -142,7 +142,7 @@ Implement the system with these guidelines
   * Layer 3 - Hard Business Rules - normalization transforms
      * Quality
 	 * Notes
-	   * {dev,qa,stage,prod}.{ds,LoB}.L3.{DOMAIN}
+	   * {dev,qa,stage,prod}.{ds,LoB}.l3.{DOMAIN}
 	   * System Column Computation
 	   * Data Cleansing
 	   * Handles deletes and updates - Merge Pattern
@@ -153,7 +153,7 @@ Implement the system with these guidelines
   * Layer 4 - Multiple Data Sources Joined, soft business rules - widening transforms
      * Integrated
 	 * Notes
-	   * {dev,qa,stage,prod}.{ds,LoB}.L4.{DOMAIN}
+	   * {dev,qa,stage,prod}.{ds,LoB}.l4.{DOMAIN}
 	   * Any requirement that the business user states that changes the data or changes the meaning of the data
 	     * The grain or interpretation
 	   * Integrate data from multiple systems
@@ -164,7 +164,7 @@ Implement the system with these guidelines
   * Layer 5 - Clean Reference Tables and Lookups
      * Reference
 	 * Notes
-	   * {dev,qa,stage,prod}.{ds,LoB}.L5.{DOMAIN}
+	   * {dev,qa,stage,prod}.{ds,LoB}.l5.{DOMAIN}
 	   * Conformed, Master & Reference Data
 	   * Should have AVDLs that represent data
   * Layer X - Data Lab for users transient tables / views
