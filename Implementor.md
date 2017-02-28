@@ -70,6 +70,7 @@ Implement the system with these guidelines
      * Non-published staging area
      * "Deny unless" ruleset
      * Use source database encryption algorithm on the way into this bucket if possible
+     * Partitioned by date time of ingest foo/DATE=2017-02-30/...
 	 * {dev,qa,stage,prod}.{ds,LoB}.L0.{DOMAIN}
   * Layer 1 - Schemaless/unstructured/semi-structured layer - Loaded / Encrypted
      * Goals
@@ -85,6 +86,7 @@ Implement the system with these guidelines
 		 * PCI
 		 * etc...
 	   * md5 or other checksum validation iff available
+	   * Partitioned by Ingest datetime
 	   * Pattern matchers for
 	     * Credit card numbers
 		 * social security numbers
@@ -190,12 +192,23 @@ Implement the system with these guidelines
     * Satellites - Descriptors
 
 ### Maturity of Ingests
-  * Manual
-    * Data is assured not to have PCI, PII, Confidential Sensitive, Confidential
-    * Data is loaded and made accessible to end user at Layer 1 or Layer 2
+  * Manual Raw
+    * (std) (not code review) Data is assured not to have PCI, PII, Confidential Sensitive, Confidential
+	  * visual inspection on raw data
+	  * hopefully this evolves to add automated tests for a lot of the above
+    * Data is loaded and made accessible to end user at Layer 1 and it's associated requirements.
     * Data is Smoke tested before exposed to user
-    * Data is Loaded into temp space
     * Access credentials are stored in data services Vault from hashicorp
+	  * Because we don't want to foget about passwords
+	* Table must be tagged (in property section) with maturity level of table (manual in this case)
+	* Not recommended
+    * Data is Loaded into data lab with properties that denote lastloaddate=YYYY-MM-dd property and loaded=manual
+    * Data is loaded with partition date=YYYY-MM-dd
+    * Recommended: use data services zeppelin to load data
+	  * Eventually to have a library to do this in system
+  * Manual Transformed
+    * Data is loaded and made accessible to end user at Layer 2 and it's associated requirements.
+    * Data is Loaded into Layer 2 with properties that denote lastloaddate=YYYY-MM-dd property and loaded=manual
   * Automated
     * SDLC
       * Git repository containing all code
@@ -244,7 +257,7 @@ Implement the system with these guidelines
 	  * Partitioned by Ingest datetime
 	  * md5 or other checksum validation iff available
 	  * control file asserted iff available
-      * Full loads should come in under a different partition and the table pointer should be changed
+      * Full loads should come in under a different partition and the table pointer should be changed if we know things are successful
 	* Data quality
       * All cumulatives should be increasing
       * outputs follow naming standards for underlying *.parquet files and within metastore
