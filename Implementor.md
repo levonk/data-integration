@@ -260,6 +260,7 @@ Implement the system with these guidelines
       * Full loads should come in under a different partition and the table pointer should be changed if we know things are successful
 	* Data quality
       * All cumulatives should be increasing
+      * duplicates in master data?   (or data we expect to have only one of)
       * outputs follow naming standards for underlying *.parquet files and within metastore
 	* operationalization
 	  * Do not use thriftserver, must use Livy to submit sql
@@ -277,6 +278,7 @@ Implement the system with these guidelines
     * Mock data static integration tests are created
 	* derived job stores data in a different bucket
   * Validated
+    * 
   * Monitored
   * Alertable
   * Seasoned

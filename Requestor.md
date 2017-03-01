@@ -1,10 +1,11 @@
 # data-integration - Requestor Questions
 
 ## Requestor Questions which are *required*
+NOTE: required with exceptions to be discussed.
 
  * What is the Group requesting the integration?
  * What is the common or canonical name for this dataset?
- * Where do you wish to access the data from?
+ * Where do you wish to access the data from? (Domain Names of the tooling)
  * What is in the data?
  * What is the business purpose of the integration?
  * Will the data be used for

@@ -151,7 +151,8 @@ There are two Integration Paradigms that we support.   The first is Stream Integ
     * SHA1
     * SHA256
     * Other? What?
-* Chance of duplicated records?
+  * Chance of duplicated records?
+  * What are cumulative numbers that are not expected to decrease.
 
 
 #### Data Questions (Detailed level, repeat for each field as appropriate)
