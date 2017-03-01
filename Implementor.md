@@ -211,24 +211,43 @@ Implement the system with these guidelines
     * Data is Loaded into Layer 2 with properties that denote lastloaddate=YYYY-MM-dd property and loaded=manual
   * Automated
     * SDLC
-      * Git repository containing all code
+      * Git repository containing all code.  One repo per workflow.
+      * Requestor form, Supplier form filled out within the doc/ subtree in the above git repo
       * Feature document with requirements and tech design created, code reviewed, and merged
+		  * Must have test input data (java faker library)
+		  * Must have expected output data (incl. exceptions file)
       * Job is created in git repository to load data into sensible schema
-	    * Job references environment for
+	    * Job references environment variables/centralized config for
 		  * Processing Engine
-		  * destination/S3 buckets
+		    * prod-a.spark.wdsds.net vs. qa.spark
 		  * source system info
+		    * sandbox.vendordataprovidor.com vs. production.vendordataprovidor.com
+		  * destination system info
+		    * destination/S3 buckets or other
 		  * Hashicorp Vault host
 		  * Alert Channel
-		  * Phase (dev, qa, uat, stage, prod
+		  * Phase (dev, qa, uat, stage, prod)
 	    * Job is parameterized for
 		  * start_{date,hr,yr,month,etc..} it should start processing for (inclusive)
 		  * end_{date,hr,yr,month,etc..} it should stop processing (inclusive)
-	    * If job materializes row, it must be as a DataSet
+		    * usually you know the date not the duration
+	    * If job materializes row, it must be as a DataSet (not RDD or DataFrame), must discuss with leads if you need an exception.
       * if Job is an update, enhancement, bugfix, previous data is migrated
-      * Job is smoke tested for functionality
-      * Job is tested and validated via dev, qa, uat, prod
-      * Job metadata of downstream job updated to include new job for lineage purposes
+	    * e.g. duplicate checks in the job should have a historic data migration
+	    * e.g. converting data to parquet, all historic data needs to be changed
+	  * Tests
+        * Job is smoke tested for functionality
+		* Apply unit testing when possible
+		* Use static/mock data integration tests fired from Maven for positive/negative tests of all transformations
+		  * Must have test input data (java faker library)
+		  * Must have expected output data (incl. exceptions file)
+      * Job is tested and validated via
+	    * local (static data)
+		* dev (static data as abovem dev data buckets)
+		* qa (via continuous delivery, qa data buckets)
+		* uat (via continuous delivery, uat data buckets),
+		* prod (via continuous delivery, prod data buckets)
+	  * Job metadata of downstream job updated to include new job for lineage purposes
       * Jenkinsfile for continuous delivery
       * Jenkinsfile tested and validated
       * If the job is currently running in an enviornment that isn't the latest in-production cluster, then it must be upgraded.
