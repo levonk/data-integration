@@ -4,6 +4,8 @@
 NOTE: required with exceptions to be discussed.
 
  * What is the Group requesting the integration?
+ * Which groups would require access to the data? 
+ * Would you want additional applied security to the data? 
  * What is the common or canonical name for this dataset?
  * Where do you wish to access the data from? (Domain Names of the tooling)
  * What is in the data?
