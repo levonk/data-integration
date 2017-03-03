@@ -7,3 +7,5 @@ Derived from work of Liz Keogh
   * Someone outside the org has done it before
   * A Major service providor/SaaS/Tech Giant has done it before
   * Nobody has ever done it before
+
+<!--- vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: -->
