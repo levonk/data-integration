@@ -251,6 +251,7 @@ Implement the system with these guidelines
       * Jenkinsfile for continuous delivery
       * Jenkinsfile tested and validated
       * If the job is currently running in an enviornment that isn't the latest in-production cluster, then it must be upgraded.
+      * Compleemntary expiration job is created with all above requirements and scheduled
     * AVDLs explaining data model, comments, documentation
       * Data stored as Parquet
       * Data model documentation created
