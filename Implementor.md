@@ -285,9 +285,11 @@ Implement the system with these guidelines
 	* operationalization
 	  * Do not use thriftserver, must use Livy to submit sql
 	  * Must use livy elt component job
+	  * Runbooks for entire job must be within Azkaban and have documentation in Git for the workflow
 	  * Job workflow
 	    * For data movement, serialized workflow starting with sourcing data
 	    * For validation, workflow starts from most "root" node and then starts doing validations after it confirms things are good with the root
+	    * Validation should be a separate sub-workflow so it could be run independantly, both by support and by a separate orchestration server to double validate ingests in case the first orchestration server goes down.  This can be achieved by ingest server triggering secondary server which ultimately calls back to the first server to do the validation.
   * Scheduled
     * Has been tested to have at least 5 cycles of scheduled frequency of success
     * Slack alerts have been set up to inform user (based on preference) start/success/fail/issues
