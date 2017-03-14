@@ -282,9 +282,12 @@ Implement the system with these guidelines
       * All cumulatives should be increasing
       * duplicates in master data?   (or data we expect to have only one of)
       * outputs follow naming standards for underlying *.parquet files and within metastore
-    * operationalization
-      * Do not use thriftserver, must use Livy to submit sql
-      * Must use livy elt component job
+	* operationalization
+	  * Do not use thriftserver, must use Livy to submit sql
+	  * Must use livy elt component job
+	  * Job workflow
+	    * For data movement, serialized workflow starting with sourcing data
+	    * For validation, workflow starts from most "root" node and then starts doing validations after it confirms things are good with the root
   * Scheduled
     * Has been tested to have at least 5 cycles of scheduled frequency of success
     * Slack alerts have been set up to inform user (based on preference) start/success/fail/issues
