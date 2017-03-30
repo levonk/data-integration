@@ -141,6 +141,14 @@ There are two Integration Paradigms that we support.   The first is Stream Integ
   * archived/compressed first then encrypted
   * None
 * What validations are expected on the data?
+  * Domain Integrity Constraints
+    * Not null
+    * Check
+  * Entity integrity Constraints
+    * Unique
+    * Primary Key
+  * Referential Integrity Constraints
+    * Foreign Key
   * High / Low water record thresholds
   * High / Low water field thresholds
   * Date Formats, Timezones
