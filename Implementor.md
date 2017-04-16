@@ -61,6 +61,49 @@ Implement the system with these guidelines
       * Support level
       * Who to charge for work/load/issues
 
+### Informaion Data Flow
+
+  Gathered from a Gartner report I think...
+
+  * Data Lake
+    * Gather
+      * Data collection process
+      * Multiple factors and is a separate topic
+    * Know
+      * Define data elements
+      * Know data relationships
+    * Clean
+      * Tidy data - relationships validated
+      * Data errors identified and corrected
+    * Analyze
+      * Exploratory Analysis
+      * Statistical Analysis
+      * Machine Learning
+      * Deep Learning
+    * Present
+      * Organize the data logically
+      * Aggregate and Report
+    * Decision
+      * Actionable Information
+  * Data Landfill
+    * Gather
+      * Data collection process
+      * Multiple factors and is a separate topic
+    * Know
+      * Data not understood
+      * No data dictionary or code book
+    * Clean
+      * Trust with no validation
+      * Data errors overlooked
+    * Analyze
+      * Analysis invalidated
+      * Results confusing
+    * Present
+      * Assumptions questionable
+      * Reports misleading
+    * Decision
+      * Poor Decisions
+
 ### Data Storage Layers
 
   * Layer 0 - Pre Sensitive Data Screen - Extract
