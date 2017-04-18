@@ -334,7 +334,14 @@ Implement the system with these guidelines
 	    * For validation, workflow starts from most "root" node and then starts doing validations after it confirms things are good with the root
 	    * Validation should be a separate sub-workflow so it could be run independantly, both by support and by a separate orchestration server to double validate ingests in case the first orchestration server goes down.  This can be achieved by ingest server triggering secondary server which ultimately calls back to the first server to do the validation.
 	    * Properly handles creating locks, cleaning them, creating jobs to clean up the locks
-	    * Properly 
+        * Locks for preventing repeat task runs
+        * Locks for preventing repeat workflow runs
+        * Locks for preventing simultaneous task runs
+        * Locks for preventing simultaneous workflow runs
+	    * Try to make your workflows
+        * Reentrant
+        * Referentialy transparent
+        * Idempotent
   * Scheduled
     * Has been tested to have at least 5 cycles of scheduled frequency of success
     * Slack alerts have been set up to inform user (based on preference) start/success/fail/issues
