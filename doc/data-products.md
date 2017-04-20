@@ -2,8 +2,17 @@
 
 A stong Data Services team has a comprehensive capability set.   These are some of the outputs from the team.
 
+  * [Workflows](#data-workflows)
+  * [Components](#data-components)
+  * [Orchestration](#data-orchestration)
+  * [Integration](#data-integration)
+  * [Persistence](#data-persistence)
+  * [Analysis](#data-analysis)
+  * [Applications](#data-applications)
+  * [Practices](#data-practices)
+
 ##  Data Workflows
-This is the bulk of what the team does.  Within this repository are questionaires for the various players involved in sourcing the data.
+This is the bulk of what the team does.  Within this repository are questionaires for the various players involved in sourcing the data.   Often times these are stiched together data tasks that are involved in ingestion, loading or transformation.   There are 
 
 The challenge with this work is that the quality of the source data and up stream delivery efforts vary drastically between the different data sources.
 	* Examples
@@ -11,17 +20,19 @@ The challenge with this work is that the quality of the source data and up strea
       * Omniture Ingest
 
 ##  Data Components
-  * Data Components
     * Sqoop Ingestor
     * (S)FTP Ingestor
     * Parquet Mapper
 
-##  Data Platforms
-    * Integration
+##  Data Orchestration
+	  * Batch Processes
+	    * Azkaban
+
+##  Data Integration
 	  * Message Bus
 	    * Confluent platform
 
-##  Persistence
+##  Data Persistence
 Some of the challenges associated with this function is the unpredictable nature of the queries coming into an analytical system and the varied skillsets of the users.
       * Data Lakes
         * Apache Spark
@@ -30,7 +41,7 @@ Some of the challenges associated with this function is the unpredictable nature
       * Data Marts
         * PostgreSQL
 
-##  Analysis
+##  Data Analysis
 
 	  * Adhoc Notebooks
 	    * Functions
