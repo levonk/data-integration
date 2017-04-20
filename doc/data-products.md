@@ -20,6 +20,7 @@ The challenge with this work is that the quality of the source data and up strea
       * Omniture Ingest
 
 ##  Data Components
+These are tools that 
     * Sqoop Ingestor
     * (S)FTP Ingestor
     * Parquet Mapper
@@ -101,3 +102,6 @@ Some of the challenges associated with this function is the unpredictable nature
     * Processes
     * Training
     * Advice / Consulting
+    * Data Modeling
+    * Master Data
+    * Data Glossary / Catalog
