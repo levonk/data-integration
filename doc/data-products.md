@@ -2,17 +2,17 @@
 
 A stong Data Services team has a comprehensive capability set.   These are some of the outputs from the team.
 
-  * [Workflows](#data-workflows)
-  * [Components](#data-components)
-  * [Orchestration](#data-orchestration)
-  * [Integration](#data-integration)
-  * [Persistence](#data-persistence)
-  * [Analysis](#data-analysis)
-  * [Applications](#data-applications)
-  * [Practices](#data-practices)
+  * [Workflows](#data-workflows) - multi-task processes to manipulate data.
+  * [Components](#data-components) - tools to support a task in a workflow
+  * [Orchestration](#data-orchestration) - a mechanisim to trigger or schedule workflows.
+  * [Integration](#data-integration) - a platform to support moving data around
+  * [Persistence](#data-persistence) - a platform to store data
+  * [Analysis](#data-analysis) - an effort to answer a question using the above data and platforms.
+  * [Applications](#data-applications) - a more refined implementation of a tool, process or analysis.
+  * [Practices](#data-practices) - processes that support data teams or the customers of data services.
 
 ##  Data Workflows
-This is the bulk of what the team does.  Within this repository are questionaires for the various players involved in sourcing the data.   Often times these are stiched together data tasks that are involved in ingestion, loading or transformation.   There are 
+This is the bulk of what the team does.  Within this repository are questionaires for the various players involved in sourcing the data.   Often times these are stiched together data tasks that are involved in ingestion, loading or transformation (ELT).   The ELT is often supported by packaged [components](#data-components), run through an [orchestration](#data-orchestration) service against a [persistence](#data-persistence) engine or a [data product](#data-product)
 
 The challenge with this work is that the quality of the source data and up stream delivery efforts vary drastically between the different data sources.
 	* Examples
