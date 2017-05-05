@@ -92,11 +92,13 @@ Some of the challenges associated with this function is the unpredictable nature
 		  * record of transactions
 
 ##  Data Applications
+These are typically end-to-end solutions that perform several steps accompanied with some sort of interface to interact with them.
+
     * Tools
 	  * RDBMS Mapper
 	  * Google Sheet Ingestor
-	  * DamFingers
-	  * cd.wdsds.net
+	  * DamFingers Security Tool
+	  * Continuous Integration & Delivery
 	  * Maven Archetypes
     * Services
 	  * URLShortener
@@ -109,6 +111,7 @@ Some of the challenges associated with this function is the unpredictable nature
 	  * CRM - Proposed customer relationship management system
 
 ## Data Practices
+    * Estimation
     * Documentation
     * Processes
     * Training
