@@ -22,15 +22,14 @@ NOTE: required with exceptions to be discussed.
    * yes
    * no
  * Phased Delivery
-   * manual
-   * automated
-   * scheduled
-     * This is typically where we stop work, unless more is requested.
-   * Derived / Aggregated
-   * validated
-   * monitored
-   * alertable
-   * seasoned
+   * manual - You are not sure whether you want a repeat load
+   * automated - you need a reproducable data load but there is no schedule
+   * scheduled - you want the automated load to happen on a schedule and will help the team improve the reliability as issues are uncovered
+   * Derived / Aggregated - You want reasonable transformations of the data to support reporting
+   * validated - You know some validations that need to occur on the data before you rely on it
+   * monitored - you want history about how the data load performs as far as reliability and status
+   * alertable - you need a higher than next business day SLA
+   * seasoned - you need a hypercare period that will assure high reliablity on the data feed without a lot of attention
  * The Business Subject Matter Expert (SME) of the integration? (day-to-day user of the data, probably the person filling out this form)
    * Contact Information
      * Name:
@@ -58,12 +57,12 @@ NOTE: required with exceptions to be discussed.
        * Email
        * Phone
   * Who can we go through for the upstream providor of this data to fill out additional information?
-   * Contact Information
-     * Name:
-     * Supplier/Vendor:
-     * Email:
-     * Phone:
-     * IM:
+    * Contact Information
+      * Name:
+      * Supplier/Vendor:
+      * Email:
+      * Phone:
+      * IM:
 
 
 ## Requestor Questions which are optional
