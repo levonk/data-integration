@@ -1,3 +1,7 @@
+  * Introduction
+    * I'm here to support you folks
+    * What are the major challenges?
+    * What are the major challenges?
   * Context
     * Team & Roles
   * Process
@@ -25,6 +29,7 @@
     * Event Processing
     * Report Generation
   * Integration
+    * Conviva
     * Other Studios
       * Legal Issues
   * Datalake
