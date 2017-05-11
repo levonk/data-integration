@@ -1,9 +1,12 @@
   * Introduction
+    * 3 days a week
     * I'm here to support you folks
     * What are the major challenges?
-    * What are the major challenges?
-  * Context
-    * Team & Roles
+      * Major blockers
+    * What can I help with
+    * Context
+      * Team & Roles
+      * Best way to send introduction email
   * Process
     * Enter bugs
     * Work Defined
@@ -30,6 +33,7 @@
     * Report Generation
   * Integration
     * Conviva
+    * Others
     * Other Studios
       * Legal Issues
   * Datalake
@@ -41,5 +45,8 @@
     * Popular
     * Metadata Similarity (TF-IDF)
     * Personalized
-    * 
+    * A/B Testing
+  * Merchandiser
+  * CRM
+  * A/B Testing
 
