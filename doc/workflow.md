@@ -1,31 +1,35 @@
 ## States
-  * None - Default ingest state, POs need to review
-  * Legacy - Get stories out of the way to allow for new process
-  * N/A - Impl Detail - Developer generated story to complete larger effort
-  * N/A - Handoff - Gave to another team
-  * N/A - Won't Do - An effort that could be sovled another way
-  * N/A - Can't Do - Not possible / Permanent Block
-  * N/A - No Longer Needed - Legacy Story
-  * N/A - Labels - "decoration story" to help demarcate stories for Visable seperatation
-  * N/A - Other - Not important to surface for one of the stories
-  * Flesh out - PO is in the process of adding details
-  * For Grooming - PO is done authoring story, waiting to share with the tech lead
-  * Tech Design - Tech Lead needs to provide additional detail for individual contributor for go forward
-  * Sprint Ready - Ready to prioritize
-  * Prioritized - In order represetnation of backlog may span multiple sprints
-  * Scheduled - Waiting for develoepr to pick up, intended to span 1 sprint
-  * Development - Developer is actively working on the item
-  * Code Review - Waiting for code review to complete
-  * Deploy UAT - code review is past, waiting for UAT deployment
-  * Deliver UAT - PO needs to communicate to Business
-  * Deploy to Prod - PO has gotten UAT approval, needs it on prod
-  * Deliver to Prod - Item has been put into production, PO needs to communicate delivery
-  * Accepted - PO needs to get okay from business about production deployment
-  * Accept Timeout - PO has attempted to get acceptance for three weeks, with multiple requests, assumed accepted
-  * Archive - Clear out of our boards
-  * DEKanbanHistory - Not sure what this is for
-  * SPlit_Closed - a story was split and the previous story is moved out of the way
-  * Admin_OOO - Administrative overhead story
+  * States for getting stories out of the way with proper tracking
+	  * Legacy - Get stories out of the way to allow for new process
+	  * N/A - Impl Detail - Developer generated story to complete larger effort
+	  * N/A - Handoff - Gave to another team
+	  * N/A - Won't Do - An effort that could be solved another way
+	  * N/A - Can't Do - Not possible / Permanent Block
+	  * N/A - No Longer Needed - Legacy Story
+	  * N/A - Labels - "decoration story" to help demarcate stories for Visable seperatation
+	  * N/A - Other - Not important to surface for one of the stories
+	  * Archive - Delivered, Accepted, Hypercare done, Work that no longer needs to be tracked on any board
+	  * DEKanbanHistory - Should be mapped to Archive
+	  * SPlit_Closed - a story was split and the previous story is moved out of the way
+	  * Admin_OOO - Administrative overhead story
+  * Work Definition States
+	  * None - Default ingest state, POs need to review
+	  * Flesh out - PO is in the process of adding details
+	  * For Grooming - PO is done authoring story, waiting to share with the tech lead
+	  * Tech Design - Tech Lead needs to provide additional detail for individual contributor for go forward
+	  * Sprint Ready - Ready to prioritize
+	  * Prioritized - In order represetnation of backlog may span multiple sprints
+  * Development States
+	  * Scheduled - Waiting for develoepr to pick up, intended to span 1 sprint
+	  * Development - Developer is actively working on the item
+	  * Code Review - Waiting for code review to complete
+  * Deployment and Delivery States
+	  * Deploy UAT - code review is past, waiting for UAT deployment
+	  * Deliver UAT - PO needs to communicate to Business
+	  * Deploy to Prod - PO has gotten UAT approval, needs it on prod
+	  * Deliver to Prod - Item has been put into production, PO needs to communicate delivery
+	  * Accepted - PO needs to get okay from business about production deployment
+	  * Accept Timeout - PO has attempted to get acceptance for three weeks, with multiple requests, assumed accepted
 
 ## Views
   * *DS Product Planning
