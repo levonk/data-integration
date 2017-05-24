@@ -1,5 +1,9 @@
+# Project Workflow within Data Services
+
+Traditionally development was the primary users of the project management system.  Given the complexity of dealing with so many different groups, different POs, different PMs, small projects, it quickly became evident we needed a cross cutting state representation to keep noise out of developers view and allow for workflow to represent PO story creation and PO work delivery.
+
 ## States
-  * States for getting stories out of the way with proper tracking
+  * Misc States for getting stories out of the way with proper tracking
 	  * Legacy - Get stories out of the way to allow for new process
 	  * N/A - Impl Detail - Developer generated story to complete larger effort
 	  * N/A - Handoff - Gave to another team
@@ -14,10 +18,25 @@
 	  * Admin_OOO - Administrative overhead story
   * Work Definition States
 	  * None - Default ingest state, POs need to review
-	  * Flesh out - PO is in the process of adding details
+		* Entrance Criteria - None
+		* Exit Criteria - PO is prepared to work on it for denition
+		* Purpose: Hold stories to be defined
+	  * Flesh Out - PO is in the process of adding details
+		* Entrance Criteria - PO is working on defining story
+		* Exit Criteria - PO has completed initial definition of story
+		* Purpose: To hold work in progress for POs
 	  * For Grooming - PO is done authoring story, waiting to share with the tech lead
+		* Entrance Criteria - PO has added all initial data for story
+		* Exit Criteria - The story has been understood and estimated by engineering or submitted for tech design by a senior engineer
+		* Purpose: To hold work to be presented to engineering
 	  * Tech Design - Tech Lead needs to provide additional detail for individual contributor for go forward
+		* Entrance Criteria - During grooming it was determined that senior engineers need to create a design
+		* Exit Criteria - A design suitable for use by the tasked engineer is created and the story is estimated
+		* Purpose: In case the story is at too high a level, then a tech design can be created & reviewed.  Infrequently used state as we prefer SPIKE stories.
 	  * Sprint Ready - Ready to prioritize
+		* Entrance Criteria - The story is pointed and the team understands the purpose and work associated with it
+		* Exit Criteria - The PO has an idea about the priority associated with the story
+		* Purpose: In case the story is at too high a level, then a tech design can be created & reviewed.  Infrequently used state as we prefer SPIKE stories.
 	  * Prioritized - In order represetnation of backlog may span multiple sprints
   * Development States
 	  * Scheduled - Waiting for develoepr to pick up, intended to span 1 sprint
