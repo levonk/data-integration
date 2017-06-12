@@ -1,8 +1,10 @@
 # Data Governance
 
-## First Rule
+## Intorductions
 
-A successful Data Governance program can only exist if both technology and business are on board.
+*A successful Data Governance program can only exist if both technology and business are on board.*
+
+It's also important to note that Data Governance is a spectrum of service with tradeoffs.  On the no data governance level, there is a lot of agility to be gained with the associated risks.  On the full level of governance there will be a significant impact to delivery.   A recommended pattern is to allow data to come in and governance to layered on rather than becoming a blocker in delivery.
 
 ## Data Definition
 It's critical that Data have unambiguous meanings.  If somebody asks for "Gross Box Office" the term should be sufficient to determine whether it is referring to domestic theatrical opening weekend or inception to date across in theater as well as the home entertainment & streaming space in all territories.  It should also be clear whether it was inflation adjusted or currency converted to the US Dollar and whether it is Net or Gross.  An example might be "Gross Box Office: the US Dollar non-inflation adjusted gross box office receipts for all territories during the entire first theatrical run"  If the reference doesn't satisfy the entire explanation, then there should be a different name that the data is known by.  This applies as strongly to derived data as it does to supplied data.
