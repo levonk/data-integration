@@ -1,7 +1,5 @@
 # Data Governance
 
-## Intorductions
-
 *A successful Data Governance program can only exist if both technology and business are on board.*
 
 It's also important to note that Data Governance is a spectrum of service with tradeoffs.  On the no data governance level, there is a lot of agility to be gained with the associated risks.  On the full level of governance there will be a significant impact to delivery.   A recommended pattern is to allow data to come in and governance to layered on rather than becoming a blocker in delivery.
@@ -16,7 +14,11 @@ Understanding the Service Level Agreements (SLAs) associated with all the data a
 The Governance team must assess the quality of the data sources and assure that the quality is documented within the dictionary.   It would also benefit the team to identify better sources for the data in question.
 
 ## Data Usability
-Mapping data to master data is a key responsblity of the Data Governance team.  The role of the Data Stewards on the governance team also includes reviewing the "linkability" that the automated systems have suggested or completed.
+Mapping data to master data is a key responsblity of the Data Governance team.  The role of the Data Stewards on the governance team also includes reviewing the "linkability" that the automated systems have suggested or completed.  At times this will invovle manually curating data, or defining processes and tools to assure that data goes through the proper workflow.
+
+It is also the responsibility for the data governance team to come up with validations that should be applied to assess the quality
+
+
 
 ## Security
 It is the role of the data governance team to empower those that would be doing analysis.   This includes supplying alternatives (Homomorphic encryption, lower resolution data, etc...) when there is data that could do ireperable harm should an analyst abuse it.
