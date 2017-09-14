@@ -36,6 +36,7 @@ Implement the system with these guidelines
     * Have preconditions, postconditions and invarients in data load
     * Standardized Date Representation
       * Standardized Time Zone
+      * https://en.wikipedia.org/wiki/ISO_8601 format
     * Assure compressed: Parquet uses native compression
     * Assure splittable: Parquet is splitable
     * Assure block size
