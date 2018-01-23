@@ -178,6 +178,7 @@ Implement the system with these guidelines
        * Semantic views and data glossary
        * Should have AVDLs that represent data even if data is not stored as parquet/avro
        * Field level validations
+         * Investigate library like https://github.com/vlbaluk/java-validator-livr and the LIVR specification http://livr-spec.org/
        * Data Domain Alignment (Data Type Matching)
      * Persona
        * Need to understand data to communicate higher level requirements
@@ -286,7 +287,7 @@ Implement the system with these guidelines
           * Must have expected output data (incl. exceptions file)
       * Job is tested and validated via
         * local (static data)
-        * dev (static data as abovem dev data buckets)
+       overuse any of his or her strengths?   Briefly explain how, by taking them to an extreme, the "strengths become weaknesses." * dev (static data as abovem dev data buckets)
         * qa (via continuous delivery, qa data buckets)
         * uat (via continuous delivery, uat data buckets),
         * prod (via continuous delivery, prod data buckets)
@@ -321,10 +322,12 @@ Implement the system with these guidelines
       * md5 or other checksum validation iff available
       * control file asserted iff available
       * Full loads should come in under a different partition and the table pointer should be changed if we know things are successful
+      * Publish schema and data locations to Data Catalog
     * Data quality
       * All cumulatives should be increasing
       * duplicates in master data?   (or data we expect to have only one of)
       * outputs follow naming standards for underlying *.parquet files and within metastore
+      * Data staging locations & processes that check validations before publishing for general consumption.
 	* operationalization
 	  * Do not use thriftserver, must use Livy to submit sql
 	  * Must use livy elt component job
