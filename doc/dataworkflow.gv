@@ -1,0 +1,32 @@
+digraph dataWorkflow {
+	ranksep=2.0
+	nodesep=2.0
+	overlap="false"
+
+	node [ color="black", shape="rectangle"]
+
+	"PO-REQUESTOR-FORM" [label="Product Owner fill out Requestor Form" color="#FFFFFFFF"]
+	"PO-WORK-DEFINE" [label="Product Owner creates story" color="#FFFFFFFF"]
+	"TEAM-WORK-REVIEW" [label="Team rough order of magnitutde estimates" color="#FFFFFFFF"]
+	"PO-WORK-PRIORTIZE" [label="Product Owner prioritizes the work" color="#FFFFFFFF"]
+	"PM-WORK-SCHEDULE" [label="Project Manager schedules work" color="#FFFFFFFF"]
+	"DEV-PROJECT-CREATE" [label="Developer create Git project" color="#00FFFFFF"]
+	"DEV-REQUESTOR-COMMIT" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"DEV-SUPPLIER-FORM" [label="Complete Data Requestor Form" color="#FFFFFFFF"]
+	"DEV-SUPPLIER-COMMIT" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"DEV-DESIGN-CREATE" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"DEV-DESIGN-COMMIT" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"TEAM-DESIGN-REVIEW" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"DEV-DESIGN-ITERATE" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"DEV-FLOW-IMPLEMENT" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"CD-FLOW-DEV" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"DEV-FLOW-TEST" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"TEAM-FLOW-REVIEW" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"QA-APPROVE-DEV" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"CD-FLOW-QA" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"QA-FLOW-REVIEW" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"PO-APPROVE-UAT" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"CD-FLOW-UAT" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"USER-FLOW-UAT" [label="Dev commit requestor data" color="#00FFFFFF"]
+	"PO-APPROVE-PROD" [label="Dev commit requestor data" color="#00FFFFFF"]
+}

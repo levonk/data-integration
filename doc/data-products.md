@@ -41,11 +41,16 @@ This is a component of the platform responsible for data ingestion and publishin
   * Examples
 	  * Message Bus
 	    * Confluent platform (Kafka)
+	  * GraphQL API
+	    * https://github.com/graphile/postgraphile
 
 ##  Data Persistence
 Data is persisted in a platform specialized for storage and querying
+  * Examples
+    * S3
 
 Some of the challenges associated with this function is the unpredictable nature of the queries coming into an analytical system and the varied skillsets of the users.
+##  Compute (and sometimes storage)
       * Data Lakes
         * Apache Spark
       * Data Warehouses
@@ -108,6 +113,7 @@ These are typically end-to-end solutions that perform several steps accompanied 
     * User Facing
 	  * DataPortal - Central user interface to access the rest of the tools
 	  * DataLink - Record Linking product that allows a person through a user interface to approve fuzzy matching assessments
+	  * DataVerify - Analyst level Self Service data notification tool for simple INFO/WARN/ERROR/FATAL alerting based on sql query.
 	  * CRM - Proposed customer relationship management system
 
 ## Data Practices
